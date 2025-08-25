@@ -9,7 +9,8 @@ We build and evaluate deep learning pipelines for text detection, multimodal fea
 
 ### **Phase 1: Text Detection (FCN)**
 - Implemented **Fully Convolutional Network (FCN)** based on ResNet-50 backbone.
-- Dataset: [Everyday Arabic-English Scene Text (EvArEST)](https://arxiv.org/abs/2306.09255)  
+- Dataset: [Everyday Arabic-English Scene Text (EvArEST)]([https://arxiv.org/abs/2306.09255](https://github.com/HGamal11/EvArEST-dataset-for-Arabic-scene-text)<img width="468" height="15" alt="image" src="https://github.com/user-attachments/assets/d8597d54-93cb-46a9-96cb-e531c6615c3a" />
+)  
   - 510 images, annotated with 4-point polygons per word.
 - Pipeline:
   1. Load dataset & parse annotations (`.txt` files with polygon coords).
