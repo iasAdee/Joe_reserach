@@ -5,6 +5,10 @@ __pycache__/
 venv/
 *.log
 
+#folders
+lib/
+bin/
+
 # Jupyter
 .ipynb_checkpoints/
 

@@ -1,0 +1,27 @@
+# Python cache files
+*.py[cod]
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+#folders to ignore
+lib/
+bin/
+share/
+etc/
+data/
+models/
+
+
+# OS-specific
+.DS_Store
+
+# IDE settings
+.vscode/
+.idea/

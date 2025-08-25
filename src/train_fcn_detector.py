@@ -5,9 +5,10 @@ import torch.optim as optim
 from torch.utils.data import DataLoader
 from torchvision.models.segmentation import fcn_resnet50
 from sklearn.metrics import precision_score, recall_score, f1_score
-from utils.dataset import EvARESTDataset
+
 import albumentations as A
 from albumentations.pytorch import ToTensorV2
+from utils.dataset import EvARESTDataset
 
 
 # src/detection/train_fcn_detector.py

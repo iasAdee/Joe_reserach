@@ -42,13 +42,13 @@ with torch.no_grad():
     output = model(image_tensor)["out"]
     pred_mask = (torch.sigmoid(output) > 0.5).float().squeeze().cpu().numpy()
 
-
+"""
 # ========================
 # 4. Visualize the prediction
 # ========================
 plt.figure(figsize=(10, 5))
 plt.subplot(1, 2, 1)
-plt.imshow(cv2.cvtColor(cv2.imread("../data/Det_train/img_13.jpg"), cv2.COLOR_BGR2RGB))
+plt.imshow(cv2.cvtColor(cv2.imread("../data/Det_train/img_105.jpg"), cv2.COLOR_BGR2RGB))
 plt.title("Original Image")
 plt.axis("off")
 
@@ -56,7 +56,7 @@ plt.subplot(1, 2, 2)
 plt.imshow(pred_mask, cmap="gray")
 plt.title("Predicted Text Mask")
 plt.axis("off")
-plt.show()
+plt.show()"""
 
 
 # ========================
@@ -88,7 +88,7 @@ def load_ground_truth_mask(image_path, annotation_dir):
 image_path = "../data/Det_train/img_13.jpg"
 annotation_dir = "../data/Det_train"
 
-gt_mask = load_ground_truth_mask(image_path, annotation_dir)
+#gt_mask = load_ground_truth_mask(image_path, annotation_dir)
 
 # ========================
 # Visualization
@@ -100,14 +100,28 @@ plt.imshow(cv2.cvtColor(cv2.imread(image_path), cv2.COLOR_BGR2RGB))
 plt.title("Original Image")
 plt.axis("off")
 
-plt.subplot(1, 3, 2)
+"""plt.subplot(1, 3, 2)
 plt.imshow(gt_mask, cmap="gray")
 plt.title("Ground Truth Mask")
 plt.axis("off")
-
+"""
 plt.subplot(1, 3, 3)
 plt.imshow(pred_mask, cmap="gray")
 plt.title("Predicted Mask")
 plt.axis("off")
 
 plt.show()
+
+
+output_dir = "../data/fcn_masks/"
+os.makedirs(output_dir, exist_ok=True)
+
+# Resize pred_mask to original image size
+orig = cv2.imread(image_path)
+mask_resized = cv2.resize(pred_mask.astype(np.uint8) * 255, (orig.shape[1], orig.shape[0]))
+
+# Save mask
+mask_path = os.path.join(output_dir, os.path.basename(image_path).replace(".jpg", "_mask.png"))
+cv2.imwrite(mask_path, mask_resized)
+
+print(f"Saved predicted mask: {mask_path}")
